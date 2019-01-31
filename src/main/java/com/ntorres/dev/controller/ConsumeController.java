@@ -19,9 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ntorres.dev.entity.Card;
 import com.ntorres.dev.entity.Consume;
-import com.ntorres.dev.service.CardService;
 import com.ntorres.dev.service.ConsumeService;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -35,13 +33,12 @@ public class ConsumeController {
 	@SuppressWarnings("rawtypes")
 	@RequestMapping("/consumes/{cardId}")
     @ResponseBody
-    public ResponseEntity<List> getCards(@PathVariable(value = "cardId") Long cardId) {
-		return new ResponseEntity<List>(consumeService.getCards(cardId), HttpStatus.OK);
+    public ResponseEntity<List> getConsumes(@PathVariable(value = "cardId") Long cardId) {
+		return new ResponseEntity<List>(consumeService.getConsumes(cardId), HttpStatus.OK);
     }
 	
-	@RequestMapping(value = "/add", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(value = "consume/add", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     @ResponseBody
-    
     public Consume addConsume(@RequestBody Consume consume) {
 		return consumeService.save(consume);
     }

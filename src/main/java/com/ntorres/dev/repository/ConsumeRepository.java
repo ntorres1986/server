@@ -8,5 +8,5 @@ import com.ntorres.dev.entity.Consume;
 
 
 public interface ConsumeRepository extends JpaRepository<Consume, Long>{
-	List<Consume> findByCard(Long cardId);
+	List<Consume> findConsumeByCardId(Long cardId);
 }

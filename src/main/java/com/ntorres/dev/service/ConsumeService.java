@@ -15,8 +15,8 @@ public class ConsumeService {
 	 @Autowired
 	 private ConsumeRepository repository;
 	 
-	 public List<Consume> getCards(Long cardId) {
-	     return (List<Consume>) repository.findByCard(cardId);
+	 public List<Consume> getConsumes(Long cardId) {
+	     return (List<Consume>) repository.findConsumeByCardId(cardId);
 	 }
 	 public Consume save(Consume consume) {
 		return repository.save(consume);

@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
 @Entity
-@NamedQuery(name = "Card.findByCard", query = "SELECT c from Consume c WHERE c.card.id = :cardId")
+@NamedQuery(name = "Card.findConsumeByCardId", query = "SELECT c from Consume c WHERE c.card.id = :cardId")
 public class Consume implements Serializable{
 
 	private static final long serialVersionUID = 2646127772016170677L;
