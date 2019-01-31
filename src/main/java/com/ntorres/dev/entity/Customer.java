@@ -17,11 +17,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Customer implements Serializable {
 
-	/**
-	 * 
-	 */
+	 
 	private static final long serialVersionUID = 3800468449928892303L;
 
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Long id;
@@ -38,9 +37,11 @@ public class Customer implements Serializable {
     @Column(nullable = false)
 	private String telephone;
     
+    
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
     private List<Card> card;
+    
 	 
 	public Long getId() {
 		return id;
@@ -72,11 +73,17 @@ public class Customer implements Serializable {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+	
 	public List<Card> getCard() {
 		return card;
 	}
 	public void setCard(List<Card> card) {
 		this.card = card;
+	}
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", name=" + name + ", address=" + address + ", city=" + city + ", telephone="
+				+ telephone + ", card=" + card + "]";
 	} 
 	
 }

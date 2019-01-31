@@ -17,8 +17,7 @@ import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@NamedQuery(name = "Card.findByCustomer",
-query = "SELECT c from Card c WHERE c.customer.id = :customer_id")
+@NamedQuery(name = "Card.findByCustomer", query = "SELECT c from Card c WHERE c.customer.id = :customer_id")
 public class Card implements Serializable{
 
 	
@@ -34,8 +33,12 @@ public class Card implements Serializable{
 	@Column(nullable = false)
 	private Integer ccv;
 	
-	@JsonIgnore
-	@ManyToOne
+	@Column(nullable = false)
+	private String card_type;
+	
+
+	//@JsonIgnore
+	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_customer", nullable = false, updatable = false)
     private Customer customer;
     
@@ -52,12 +55,20 @@ public class Card implements Serializable{
 		this.id = id;
 	}
 	
+	public String getCard_type() {
+		return card_type;
+	}
+	public void setCard_type(String card_type) {
+		this.card_type = card_type;
+	}
+
 	public List<Consume> getConsume() {
 		return consume;
 	}
 	public void setConsume(List<Consume> consume) {
 		this.consume = consume;
 	}
+	
 	public String getNumber() {
 		return number;
 	}
@@ -70,10 +81,18 @@ public class Card implements Serializable{
 	public void setCcv(Integer ccv) {
 		this.ccv = ccv;
 	}
+	
 	public Customer getCustomer() {
 		return customer;
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	@Override
+	public String toString() {
+		return "Card [id=" + id + ", number=" + number + ", ccv=" + ccv + ", card_type=" + card_type + ", customer="
+				+ customer + ", consume=" + consume + "]";
+	}
+	
+	
 }

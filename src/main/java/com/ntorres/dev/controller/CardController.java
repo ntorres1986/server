@@ -34,26 +34,25 @@ public class CardController {
 	@RequestMapping("/cards/{customerId}")
     @ResponseBody
     public ResponseEntity<List> getCards(@PathVariable(value = "customerId") Long customerId) {
-		System.out.print("customerId" + customerId);
-        return new ResponseEntity<List>(cardService.getCards(customerId), HttpStatus.OK);
+		return new ResponseEntity<List>(cardService.getCards(customerId), HttpStatus.OK);
     }
 	
-	@RequestMapping(value = "/cars/add", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	@RequestMapping(value = "/cards-add", method = RequestMethod.POST, produces = { MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
     @ResponseBody
+    
     public Card addCard(@RequestBody Card card) {
-        
-        return cardService.save(card);
+		return cardService.save(card);
     }
+	
 	@GetMapping("/card/{id}")
     public Card getCardById(@PathVariable(value = "id") Long id) {
         return cardService.findById(id);
     }
 	
-	@PutMapping("/cards/{id}")
+	@PutMapping("/card/{id}")
 	public Card updateCard(@PathVariable(value = "id") Long id, @Valid @RequestBody Card cardIn) {
-
-        Card card = cardService.findById(id);
-
+        
+		Card card = cardService.findById(id);
         card.setCcv(cardIn.getCcv());
         card.setNumber(cardIn.getNumber());
         card = cardService.save(card);
@@ -66,5 +65,6 @@ public class CardController {
 		Card card = cardService.findById(id);
 		cardService.delete(card);
         return ResponseEntity.ok().build();
-    }
+	}
+	
 }

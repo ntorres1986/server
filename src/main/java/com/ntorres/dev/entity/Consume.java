@@ -10,17 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name = "Card.findByCard", query = "SELECT c from Consume c WHERE c.card.id = :cardId")
 public class Consume implements Serializable{
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2646127772016170677L;
-
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -37,7 +33,6 @@ public class Consume implements Serializable{
 	private Double amount;
 	
 	
-	@JsonIgnore
 	@ManyToOne
     @JoinColumn(name = "fk_card", nullable = false, updatable = false)
     private Card card;
