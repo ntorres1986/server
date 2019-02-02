@@ -37,7 +37,6 @@ public class Card implements Serializable{
 	private String card_type;
 	
 
-	//@JsonIgnore
 	@ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "fk_customer", nullable = false, updatable = false)
     private Customer customer;

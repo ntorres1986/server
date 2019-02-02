@@ -16,10 +16,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Customer implements Serializable {
-
 	 
 	private static final long serialVersionUID = 3800468449928892303L;
-
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 

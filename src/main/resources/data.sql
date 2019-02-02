@@ -8,3 +8,7 @@ insert into card (id,number,ccv,card_type,fk_customer) values (2, '931282',124,'
 insert into consume (id,date,description,amount,fk_card) values (1, '2017-02-01 12:00:05','Gasto por compras',10000,1);
 insert into consume (id,date,description,amount,fk_card) values (2, '2017-02-01 12:00:05','Pago servicios',20000,1);
 insert into consume (id,date,description,amount,fk_card) values (3, '2017-02-01 12:00:05','Pago mercancia',30000,1);
+
+insert into adviser (id,name,specialty) values (1, 'Juan David Ramirez','Cajero');
+insert into adviser (id,name,specialty) values (2, 'Andrea Castaño','Contabilidad');
+insert into adviser (id,name,specialty) values (3, 'Cristian Camilo','Asesor');
